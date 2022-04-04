@@ -9,13 +9,17 @@ namespace GeneratorUtil
     {
         private const string RecordSeparator = ". ";
 
-        private readonly string _path = "../../../../TxtFiles/generated.txt";
+        // private readonly string _path = "../../../../TxtFiles/generated.txt";
+        private readonly string _path = @"\..\..\..\..\TxtFiles\generated.txt";
 
         private static Random _random;
 
-        private const string DictionaryPathNouns = "../../../Dictionaries/nouns.txt";
-        private const string DictionaryPathAdverbs = "../../../Dictionaries/adverbs.txt";
-        private const string DictionaryPathAdjectives = "../../../Dictionaries/adjectives.txt";
+        // private const string DictionaryPathNouns = "../../../Dictionaries/nouns.txt";
+        private const string DictionaryPathNouns = @"..\..\..\Dictionaries\nouns.txt";
+        // private const string DictionaryPathAdverbs = "../../../Dictionaries/adverbs.txt";
+        private const string DictionaryPathAdverbs = @"..\..\..\Dictionaries\adverbs.txt";
+        // private const string DictionaryPathAdjectives = "../../../Dictionaries/adjectives.txt";
+        private const string DictionaryPathAdjectives = @"..\..\..\Dictionaries\adjectives.txt";
 
         private readonly string[] _nouns;
         private readonly string[] _adverbs;
