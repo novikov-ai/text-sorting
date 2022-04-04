@@ -15,8 +15,8 @@ namespace SortingUtil
         private const int BufferSize = 64 * 1024;
 
         private static readonly char DirSeparator = Path.DirectorySeparatorChar;
-        
-        private static readonly string DefaultDir = 
+
+        private static readonly string DefaultDir =
             $@"..{DirSeparator}..{DirSeparator}..{DirSeparator}..{DirSeparator}TxtFiles{DirSeparator}";
 
         public TextSorter(string path = null)
@@ -32,7 +32,9 @@ namespace SortingUtil
             var inputExtensionIndex = _inputPath.LastIndexOf('.');
             var outputFilePath = _inputPath.Substring(0, inputExtensionIndex) + Postfix;
 
-            var loaded = new List<Record>(BufferSize);
+            int inputFileSize = (int) new FileInfo(_inputPath).Length;
+
+            var loaded = new List<Record>(inputFileSize / 25); // 25 - average one line length
 
             using (var sr = new StreamReader(_inputPath, Encoding.UTF8, true, BufferSize))
             {

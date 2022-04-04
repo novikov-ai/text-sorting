@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 
 namespace SortingUtil
 {
@@ -18,6 +17,7 @@ Sorted file will be created nearby.");
 
             try
             {
+                Console.WriteLine($"Started at {stopwatch.Elapsed}");
                 new TextSorter(filePath).Sort();
             }
             catch (Exception e)
