@@ -7,12 +7,12 @@ namespace SortingUtil
         public string Sentence;
         public ushort Number;
 
-        // internal Record(string record)
-        // {
-        //     var splited = record.Split(". ", 2);
-        //     Number = ushort.Parse(splited[0]);
-        //     Sentence = splited[1];
-        // }
+        internal Record(string record)
+        {
+            var splited = record.Split(". ", 2);
+            Number = ushort.Parse(splited[0]);
+            Sentence = splited[1];
+        }
 
         public override string ToString()
         {

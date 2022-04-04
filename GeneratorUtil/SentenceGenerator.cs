@@ -7,6 +7,8 @@ namespace GeneratorUtil
 {
     public class SentenceGenerator
     {
+        private const int BufferSize = 64 * 1024;
+        
         private const string RecordSeparator = ". ";
 
         private static readonly char DirSeparator = Path.DirectorySeparatorChar;
@@ -59,10 +61,8 @@ Check if dictionaries exists:
                 throw new ArgumentException("Provide less size.");
 
             var random = new Random();
-
-            const int bufferSize = 65536;
-
-            using (var sw = new StreamWriter(_path, false, Encoding.UTF8, bufferSize))
+            
+            using (var sw = new StreamWriter(_path, false, Encoding.UTF8, BufferSize))
             {
                 string cachedSentence = null;
 
