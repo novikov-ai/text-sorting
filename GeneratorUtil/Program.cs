@@ -10,16 +10,17 @@ namespace GeneratorUtil
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+
+            var dirSeparator = Path.DirectorySeparatorChar;
             
             Console.WriteLine(@"Default generating file is 1000MB (1GB).
-If you want change it size provide value in MB or enter any key.");
+If you want change it size provide integer value in MB or enter any key.");
             if (!int.TryParse(Console.ReadLine(), out var fileSizeMb))
             {
                 fileSizeMb = 1000;
             }
 
-            // var filePath = $"../../../../TxtFiles/generated_mb{fileSizeMb}.txt";
-            var filePath = $@"..\..\..\..\TxtFiles\generated_mb{fileSizeMb}.txt";
+            var filePath = $@"..{dirSeparator}..{dirSeparator}..{dirSeparator}..{dirSeparator}TxtFiles{dirSeparator}generated_mb{fileSizeMb}.txt";
             Console.WriteLine($@"Default file path is: {filePath}");
 
             try

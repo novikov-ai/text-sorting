@@ -9,17 +9,21 @@ namespace GeneratorUtil
     {
         private const string RecordSeparator = ". ";
 
-        // private readonly string _path = "../../../../TxtFiles/generated.txt";
-        private readonly string _path = @"\..\..\..\..\TxtFiles\generated.txt";
+        private static readonly char DirSeparator = Path.DirectorySeparatorChar;
+
+        private readonly string _path =
+            $@"{DirSeparator}..{DirSeparator}..{DirSeparator}..{DirSeparator}..{DirSeparator}TxtFiles{DirSeparator}generated.txt";
 
         private static Random _random;
 
-        // private const string DictionaryPathNouns = "../../../Dictionaries/nouns.txt";
-        private const string DictionaryPathNouns = @"..\..\..\Dictionaries\nouns.txt";
-        // private const string DictionaryPathAdverbs = "../../../Dictionaries/adverbs.txt";
-        private const string DictionaryPathAdverbs = @"..\..\..\Dictionaries\adverbs.txt";
-        // private const string DictionaryPathAdjectives = "../../../Dictionaries/adjectives.txt";
-        private const string DictionaryPathAdjectives = @"..\..\..\Dictionaries\adjectives.txt";
+        private static readonly string DictionaryPathNouns =
+            $@"..{DirSeparator}..{DirSeparator}..{DirSeparator}Dictionaries{DirSeparator}nouns.txt";
+
+        private static readonly string DictionaryPathAdverbs =
+            $@"..{DirSeparator}..{DirSeparator}..{DirSeparator}Dictionaries{DirSeparator}adverbs.txt";
+
+        private static readonly string DictionaryPathAdjectives =
+            $@"..{DirSeparator}..{DirSeparator}..{DirSeparator}Dictionaries{DirSeparator}adjectives.txt";
 
         private readonly string[] _nouns;
         private readonly string[] _adverbs;
@@ -56,9 +60,9 @@ Check if dictionaries exists:
 
             var random = new Random();
 
-            const int BufferSize = 65536;
+            const int bufferSize = 65536;
 
-            using (var sw = new StreamWriter(_path, true, Encoding.UTF8, BufferSize))
+            using (var sw = new StreamWriter(_path, false, Encoding.UTF8, bufferSize))
             {
                 string cachedSentence = null;
 
@@ -66,7 +70,7 @@ Check if dictionaries exists:
                 {
                     var generatedSentence = GenerateSentence();
 
-                    if (cachedSentence != null && byteSum % 9 == 0)
+                    if (cachedSentence != null && byteSum % _random.Next(10, 20) == 0)
                     {
                         generatedSentence = cachedSentence;
                     }
